@@ -1,4 +1,4 @@
-{
+*{
     box-sizing: border-box;
   }
   
@@ -61,7 +61,8 @@
       background: linear-gradient(90deg, #84fab0 0%, #8fd3f4 100%);
   }
   
-  .hold{ //
+  .hold{ 
+    
       background: radial-gradient(40% 50%, #FAECD5, #CAE4D8);
       border: 5px solid #eee3ea;
   
@@ -71,7 +72,7 @@
       display: none;
   }
   
-  .hovered{ //
+  .hovered{ 
       border-top: 2px solid #d9d9d9;
       height: 300px;
       border-radius: 5px;

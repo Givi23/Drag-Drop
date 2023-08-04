@@ -12,10 +12,10 @@ item.addEventListener('dragend', dragend)
 // цикл (создал переменную, совершить обход по массиву-(маршрут))
 for(const placeholder of placeholders){
     console.log(placeholder); // при каждом повторении цикла в переменную placeholder присваеваеться значения элемента массива
-    placeholder.addEventListener('dragover', dragover);
-    placeholder.addEventListener('dragenter', dragenter);
-    placeholder.addEventListener('dragleave', dragleave);
-    placeholder.addEventListener('drop', dragdrop);
+    placeholder.addEventListener('dragover', dragover); // когда карточка перетаскиваеться в область placehlder (держим карточку)
+    placeholder.addEventListener('dragenter', dragenter); // когда вся карточка находиться внутри placeholder и мы удерживаем карточку
+    placeholder.addEventListener('dragleave', dragleave); // когда мы пакидаем область placeholder но удерживаем карточку
+    placeholder.addEventListener('drop', dragdrop); // перетаскиваем в placeholder и у нас карточка там лежит отпускаем ее
 } 
 
 function dragover(event){
@@ -23,11 +23,16 @@ function dragover(event){
 }
 function dragenter(event){
     console.log('dragenter');
+    event.target.classList.add('hovered')
+    event.terget.classList.remove('hovered')
 }
 function dragleave(event){
     console.log('dragleave');
+    setTimeout(()=> event.target.classList.add('hide'),1000 )
+    // event.terget.className = 'item'
+    event.target.classList.remove('')
 }
-function drop(event){
+function dragdrop(event){
     console.log('drop');
 }
 
@@ -35,9 +40,15 @@ function drop(event){
 
 function dragstart(event){
     console.log('dragstart');
+    event.target.classList.add('hold')// к нашему элементу (карточка) добовляем новый класс hold - взамосвязь с сss, какие стили указанны 
+    // event.target.classList.add('hide')// к нашему элементу (карточка) добовляем новый класс hide - взамосвязь с сss, какие стили указанны 
+    setTimeout(()=> event.target.classList.add('hide'),0 )// функция (задершка времени)
 }
 function dragend(event){
     console.log('dragend');
+    event.target.className = 'item'// 1 вариант отпускаем карточку она становится видемой, возращаеться в прежний вид
+    // event.target.classList.remove('hold')// 2 вариант более кароткий способ
+    // event.target.classList.remove('hide')// 2 вариант
 }
 
 
@@ -96,89 +107,3 @@ function dragend(event){
 
 
 
-
-
-// let fruits = ["яблоко", "апельсин", "груша"];
-// alert (fruits);
-// console.log (fruits);
-
-// доступ к локальным переменным 
-// function showMessage(){
-// let message = "Доброе утро Гиви"
-// alert(message)
-// }
-// showMessage();
-
-// function showMessage (){
-//     let message = "хорошего вам дня Гиви"
-//     alert(message)
-// }
-// showMessage ();
-// доступ к  глобальным переменным 
-// let userName = 'Гиви';
-// function showMessage() {
-//     let message = 'Привет,' + userName;
-//     alert(message)
-// }
-// showMessage();
-// функция имеет полный внешний доступ: изменение значения (Гиви на Макс)
-// let userName = 'Гиви';
-// function showMessage (){
-//     userName = 'Макс'
-// let message = 'Привет,' + userName;
-// alert(message);
-// }
-// alert(userName);
-// showMessage();
-// alert(userName);
-
-// let cityName = 'Москва';
-// function showMessage (){
-//     cityName = 'Cанкт-Петербург'
-// let message = 'Переезд в,' + cityName;
-// alert(message);
-// }
-// showMessage();
-
-// Если одноимённая переменная объявляется внутри функции, тогда она перекрывает внешнюю
-// let cityName = 'Москва';
-// function showMessage (){
-// let cityName = 'Cанкт-Петербург'
-// let message = 'Переезд в,' + cityName;
-// alert(message);
-// }
-// showMessage();
-
-// функция с использованием параметров
-// function showMessage(from,text){
-//     alert(from + ': '+ text);
-// }
-// showMessage('Аня', 'Привет!');
-// showMessage('Аня', 'Как дела?');
-
-// возрат значения
-// function sum (a,b){
-//     return a + b;
-// }
-// let result = sum(7,7);
-// alert(result);
-// function minus (c,d){
-//     return c - d;
-// }
-// let result = minus(c,d);
-// alert(result);
-
-// функция с использованием параметров
-// function checkAge(age){
-//     if(age >= 18){
-//         return true;
-//     } else {
-//         return confirm('А родители разрешили?');
-//     }
-// }
-// let age = prompt('Cколько вам лет?', 18);
-// if (checkAge (age)){
-//     alert('Доступ получен');
-// } else {
-//     alert('Доступ закрыт');
-// }
