@@ -20,11 +20,12 @@ for(const placeholder of placeholders){
 
 function dragover(event){
     console.log('dragover');
+    event.preventDefault() // отключаем действие браузера по умолчанию
 }
 function dragenter(event){
     console.log('dragenter');
     event.target.classList.add('hovered')
-    event.target.classList.remove('hovered')
+    // event.target.classList.remove('hovered')
 }
 function dragleave(event){
     console.log('dragleave');
@@ -35,10 +36,9 @@ function dragleave(event){
 }
 function dragdrop(event){
     console.log('drop');
+    // 1.куда кладем (placeholder) 2. что кладем (item)
+    event.target.append(item) 
 }
-
-
-
 function dragstart(event){
     console.log('dragstart');
     event.target.classList.add('hold')// к нашему элементу (карточка) добовляем новый класс hold - взамосвязь с сss, какие стили указанны 
