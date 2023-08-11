@@ -24,13 +24,14 @@ function dragover(event){
 function dragenter(event){
     console.log('dragenter');
     event.target.classList.add('hovered')
-    event.terget.classList.remove('hovered')
+    event.target.classList.remove('hovered')
 }
 function dragleave(event){
     console.log('dragleave');
-    setTimeout(()=> event.target.classList.add('hide'),1000 )
+    event.target.classList.remove('hovered')
+    // setTimeout(()=> event.target.classList.add('hide'),1000 )
     // event.terget.className = 'item'
-    event.target.classList.remove('')
+    // event.target.classList.remove('')
 }
 function dragdrop(event){
     console.log('drop');
