@@ -38,12 +38,14 @@ function dragdrop(event){
     console.log('drop');
     // 1.куда кладем (placeholder) 2. что кладем (item)
     event.target.append(item) 
+   
 }
 function dragstart(event){
     console.log('dragstart');
     event.target.classList.add('hold')// к нашему элементу (карточка) добовляем новый класс hold - взамосвязь с сss, какие стили указанны 
     // event.target.classList.add('hide')// к нашему элементу (карточка) добовляем новый класс hide - взамосвязь с сss, какие стили указанны 
     setTimeout(()=> event.target.classList.add('hide'),0 )// функция (задершка времени)
+    
 }
 function dragend(event){
     console.log('dragend');
@@ -51,6 +53,42 @@ function dragend(event){
     // event.target.classList.remove('hold')// 2 вариант более кароткий способ
     // event.target.classList.remove('hide')// 2 вариант
 }
+
+// практика 
+// обратились к карточки и областям ячейк с помощью метода querySelector и querySelectorAll
+const card = document.querySelector(.'card');
+console.log(card);
+const placeholders = document.querySelectorAll(.'placeholder');
+console.log(placeholders);
+//вешаем обработчик события на карточку чтобы совершить действие .....
+card.addEventListener('dragstart', dragstart);
+card.addEventListener('dragend', dragend);
+// создаем цикл для обхода массива (маршрут)
+for(const placeholder of placeholders){
+    console.log(placeholders);
+// навесели обработчик событий и имеем возможность управлять ячейкой (placeholder) отдельно на каждую совершаем действия 
+placeholder.addEventListener('dragenter', dragenter);
+placeholder.addEventListener('dragover', dragover);
+placeholder.addEventListener('dragleave', dragleave);
+placeholder.addEventListener('drop', dragdrop);
+}
+function dragenter(event){
+    console.log('dragenter');
+    // event.target.ClassList.add('hold');
+    event.target.ClassList.add('hovered');
+    event.target.ClassList.removed('hovered');
+}
+function dragover(event){
+    console.log('dragover');
+    event.target.classList.add('hide');
+    setTimeout(()=> event.target.classList.add('hide'), 1000);
+}
+function dragleave(event){
+    console.log('dragleave');
+    
+}
+
+
 
 
 
